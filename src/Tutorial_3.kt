@@ -6,13 +6,17 @@
 * */
 
 fun main() {
-    val x = 15
-    val y = 7
+    var x = 15
+    var y = 7
     val add: Int = x + y
     val sub: Int = x - y
     val mult: Int = x * y
     val div: Int = x / y
     val mod: Int = x % y
+
+    x %= 20
+    println("The result for x is $x")
+
 
     println("Add Result: $add")
     println("Sub Result: $sub")
