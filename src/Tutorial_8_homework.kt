@@ -1,5 +1,4 @@
-import java.lang.Exception
-import java.lang.IllegalArgumentException
+import kotlin.Exception
 import kotlin.system.exitProcess
 
 /*
@@ -10,33 +9,29 @@ import kotlin.system.exitProcess
 fun main() {
     print("Please enter your age: ")
 
-    val userInput = readLine()
+    val userInput = readLine()?.toInt()
 
-    while (true) {
-        try {
-            if(userInput == "q") {
-                exitProcess(2)
-            }
-
-            if(userInput?.isNotBlank() == true) {
-                if(userInput.toInt() < 10) {
-                    println("Still young")
-                    break
-                } else if (userInput.toInt() < 18) {
-                    println("You are a young adult")
-                    break
-                } else if(userInput.toInt() < 60) {
-                    println("You are an adult")
-                    break
-                } else {
-                    println("You are old enough")
-                    break
-                }
-            }
-        } catch (e: NumberFormatException) {
-            println("Please enter the valid input")
-            break
+    try {
+        // 0 means exit or off
+        if(userInput == 0) {
+            exitProcess(2)
         }
-    }
 
+
+        if(userInput != null) {
+            if(userInput.toInt() < 10) {
+                println("Still young")
+            } else if (userInput.toInt() < 18) {
+                println("You are a young adult")
+            } else if(userInput.toInt() < 60) {
+                println("You are an adult")
+            } else {
+                println("You are old enough")
+            }
+        }
+    } catch (e: Exception) {
+        // unable to find the exact exception to show the certain error message.. =(.. will fix later
+       // println("Please enter the valid input")
+        throw e
+    }
 }
